@@ -21,7 +21,6 @@ class Vector:
     def __bool__(self):
         return bool(self.x or self.y)
 
-
 def iteration(lista,object):
     try:
         print(next(object))
@@ -35,7 +34,6 @@ def czytelnosc():
     #for i in symbols:
     #    codes.append(ord(i))
     #    symbol.append(i)
-
     #Reprezentacje listowe
     codes = [i for i in symbols]
     filters = [ord(i) for i in symbols if ord(i) > 10]
@@ -53,14 +51,33 @@ def koszulki():
     tshirts = [(color,size) for color in colors for size in sizes]
     print(tshirts)
 
+def gener():
+    colors=["black","white"]
+    sizes=["S","M","L"]
+    for tshirt in ((c,s) for c in colors for s in sizes):
+        print(tshirt)
+
+def krotki_rekordy():
+    city,year,pop,chg,area=("Tokyo",2003,32450,0.66,8014)
+    traveler_ids=[('USA','321424'),('Bra',132819034)]
+    for passport in sorted(traveler_ids):
+        print('%s/%s'%passport)
+
+    #rozpakowywanie krotki
+    t = (20,8)
+    pierwsza,druga = divmod(*t)
+    print(pierwsza,druga)
+
+def nadmiarowe_elementy():
+    a,b,*rest = range(5)
+    print(a,b,rest)
+    a,*rest,c,d = range(5)
+    print(a,*rest,c,d)
+    
 
 if __name__ == '__main__':
-
-
     x = iter(lista)
     iteration(lista,x)
-
-
     v1 = Vector(1,3)
     v2 = Vector(2,1)
     print(v1.y)
@@ -71,3 +88,6 @@ if __name__ == '__main__':
     print(bool(v1))
     czytelnosc()
     koszulki()
+    gener()
+    krotki_rekordy()
+    nadmiarowe_elementy()
