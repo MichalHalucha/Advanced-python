@@ -1,3 +1,7 @@
+import array
+import numpy
+
+
 lista = [1, 2, 3, 4, 5]
 
 class Vector:
@@ -73,7 +77,22 @@ def nadmiarowe_elementy():
     print(a,b,rest)
     a,*rest,c,d = range(5)
     print(a,*rest,c,d)
-    
+
+def my_numpy():
+    a = numpy.arange(12)
+    print(a)
+
+    #Tworzenie widoku macierzy
+    a.shape = 3, 4
+    print(a)
+    #wyświetlenie wiersza
+    print(a[2])
+    print(a[1])
+    #pobranie elementu o wsp 2,1
+    print(a[2,1])
+    #pobranie kolumny o indeksie 1
+    print(a[:,1])
+
 
 if __name__ == '__main__':
     x = iter(lista)
@@ -91,3 +110,4 @@ if __name__ == '__main__':
     gener()
     krotki_rekordy()
     nadmiarowe_elementy()
+    my_numpy()
