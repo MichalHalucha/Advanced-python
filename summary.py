@@ -1,5 +1,6 @@
 import array
 import numpy
+import time
 
 list_of_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -320,6 +321,50 @@ def passing_arguments():
     func_e(a=1, b=2, c=3, d=4)
 
 
+def startstop(func):
+    def wrapper():
+        print("Starting...")
+        func()
+        print("Finished!")
+    return wrapper
+
+
+def measuretime(func):
+    def wrapper():
+        starttime = time.perf_counter()
+        func()
+        endtime = time.perf_counter()
+        print(f"Time needed: {endtime - starttime} seconds")
+    return wrapper
+
+
+@startstop
+@measuretime
+def wastetime():
+    return sum([i**2 for i in range(1000000)])
+
+
+def sleep(func):
+    def wrapper():
+        time.sleep(2)
+        return func()
+    return wrapper
+
+
+#@sleep
+def wakeup():
+    print("Get up! Your break is over.")
+
+
+#instead of use decorators you can connect two definitions using below commands
+wakeup = sleep(wakeup)
+
+
+def decorators():
+    print(wastetime())
+    wakeup()
+
+
 if __name__ == '__main__':
     #class
     vector_operations()
@@ -340,51 +385,4 @@ if __name__ == '__main__':
     kwargs(jeden=1, dwa= "abc",trzy= [1, 2, 3])
     too_many_elements()
     passing_arguments()
-
-
-
-    # print(wastetime())
-    # print(roll())
-    # wakeup()
-
-
-#
-# def startstop(func):
-#     def wrapper():
-#         print("Starting...")
-#         func()
-#         print("Finished!")
-#     return wrapper
-#
-# #@exectime  - roll = exectime(startstop(roll))
-# @startstop   #----roll = startstop(roll) łączy roll i startstop
-# def roll():
-#     print("Rolling on the floor laughing XD")
-#
-# import time
-# def measuretime(func):
-#     def wrapper():
-#         starttime = time.perf_counter()
-#         func()
-#         endtime = time.perf_counter()
-#         print(f"Time needed: {endtime - starttime} seconds")
-#     return wrapper
-#
-# @measuretime
-# def wastetime():
-#     sum([i**2 for i in range(1000000)])
-#
-# #----------spowalnianie
-# def sleep(func):
-#     def wrapper():
-#         time.sleep(2)
-#         return func()
-#     return wrapper
-# @sleep
-# def wakeup():
-#     print("Get up! Your break is over.")
-#
-#
-# if __name__ == '__main__':
-
-#     gener()
+    decorators()
