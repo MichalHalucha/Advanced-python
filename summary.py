@@ -364,6 +364,37 @@ def decorators():
     print(wastetime())
     wakeup()
 
+#Exceptions
+class Employee:
+    def __init__(self, name, surname):
+        if not isinstance(name, str):
+            raise WrongName("Incorrect value")
+        elif not isinstance(surname, str):
+            raise WrongSurname("Incorrect value")
+        self.name = name
+        self.surname = surname
+
+    def __str__(self):
+        return f'{self.name} {self.surname}'
+
+
+class WrongName(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        print(self.value)
+        return "WrongName"
+
+
+class WrongSurname(Exception):
+    def __init__(self, value):
+        print(self.value)
+        self.value = value
+
+    def __str__(self):
+        return "WrongSurname"
+    
 
 if __name__ == '__main__':
     #class
@@ -386,3 +417,5 @@ if __name__ == '__main__':
     too_many_elements()
     passing_arguments()
     decorators()
+    #catch_exceptions
+    x = Employee(2, 10)
