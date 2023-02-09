@@ -14,3 +14,16 @@ pip freeze
 #i can leave venv using deactivate
 #this method isolate our enviroment
 #on windows there is .\venv\Scripts\training
+
+
+#how to copy current existing libs
+#lets copy enviroment
+#you can copy list that pip can read
+pip freeze > my_deps.txt
+#you can see all libs in file
+vim my_deps.txt
+#switch to another venv
+#deactivate
+#source ...
+pip install -r my_deps.txt
+#all packages will be installed
