@@ -1,0 +1,16 @@
+#check what packages are installed
+python3 -m pip freeze
+
+#create dictionary using
+python3 -m venv training
+#run venv
+source training/bin/activate
+: (training) .....
+#now i can use pip with default python 
+#i can install for example numpy on my venv
+pip install numpy
+#now i can list installed packages
+pip freeze
+#i can leave venv using deactivate
+#this method isolate our enviroment
+#on windows there is .\venv\Scripts\training
